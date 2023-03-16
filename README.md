@@ -10,7 +10,7 @@ The output can be directly visualized through Rviz
 In order to build the `ros2-tensorflow` package, the following dependencies are needed
 
 Required dependencies:
- - [ROS2 Foxy](https://docs.ros.org/en/foxy/Installation.html)
+ - [ROS2 Humble](https://docs.ros.org/en/humble/Installation.html)
 
 Rosdep dependencies:
  - [OpenCV Python](https://pypi.org/project/opencv-python/)
@@ -21,48 +21,13 @@ Optional dependencies:
  - [Tensorflow Object Detection Models](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md) for object detection tasks
  - [TensorFlow-Slim](https://github.com/google-research/tf-slim) for object segmentation tasks
 
-The provided Dockerfile contains an Ubuntu 18.04 environment with all the dependencies and this package already installed.
-
-To use the Dockerfile:
-
-    $ git clone https://github.com/alsora/ros2-tensorflow.git
-    $ cd ros2-tensorflow/docker
-    $ bash build.sh
-    $ bash run.sh
-
 ## Build
 
-This section describes how to build the `ros2-tensorflow` package and the required depenencies in case you are not using the provided Dockerfile.
-
-Get the source code and create the ROS 2 workspace
-
-    $ git clone https://github.com/alsora/ros2-tensorflow.git $HOME/ros2-tensorflow
-    $ mkdir -p $HOME/tf_ws/src
-    $ cd $HOME/tf_ws
-    $ ln -s $HOME/ros2-tensorflow/ros2-tensorflow src
-
-Install required dependencies using rosdep
-
-    $ rosdep install --from-paths src --ignore-src --rosdistro foxy -y
-
-Install the Tensorflow Object Detection Models (optional).
-Make sure to specify the correct Python version according to your system.
-
-    $ sudo apt-get install -y protobuf-compiler python-lxml python-tk
-    $ pip install --user Cython contextlib2 jupyter matplotlib Pillow
-    $ git clone https://github.com/tensorflow/models.git /usr/local/lib/python3.8/dist-packages/tensorflow/models
-    $ cd usr/local/lib/python3.8/dist-packages/tensorflow/models/research
-    $ protoc object_detection/protos/*.proto --python_out=.
-    $
-    $ echo 'export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.8/dist-packages/tensorflow/models/research' >> $HOME/.bashrc
-
-Install Tensorflow Slim (optional)
-    
-    $ pip install tf_slim
-
-Build and install the `ros2-tensorflow` package
-
-    $ colcon build
+    $ git clone https://github.com/alsora/ros2-tensorflow.git
+    $ open the ros2-tensorflow folder using VS Code
+    $ **inside the VS Code terminal type**
+    $ ./setup.sh 
+    $ ./build.sh
     $ source install/local_setup.sh
 
 ## Usage
